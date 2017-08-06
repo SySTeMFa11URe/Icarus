@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class BuildInfo : MonoBehaviour {
     public Text info;
     public GameObject player;
-    private string BuildNumber = "0002";
+    public string BuildNumber = "0002";
 	// Use this for initialization
 	void Start () {
 		

@@ -16,6 +16,7 @@ public class PlayerWings : MonoBehaviour {
 	void Update () {
         if (Input.GetKeyDown(KeyCode.Q))
         {
+            Debug.Log("Toggled");
             toggleWings();
         }
         if (wingsActive)
@@ -24,7 +25,7 @@ public class PlayerWings : MonoBehaviour {
             if (Input.GetKey(KeyCode.Space))
             {
                 //transform.Translate(Vector3.up * flySpeed);
-                rbody.AddForce(Vector3.up * 10);
+                rbody.AddForce(Vector3.up * 13);
             }
             else if(!(stopDownMotion))
             {
