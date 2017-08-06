@@ -7,19 +7,31 @@ public class GenerateWorld : MonoBehaviour {
     public GameObject stone;
 	// Use this for initialization
 	void Start () {
-		for(int i = 0; i < 10; i++)
+        for (int x = 0; x < 2; x++)
         {
-            for (int ii = 0; ii < 10; ii++)
+            for (int xx = 0; xx < 2; xx++)
             {
-                for (int iii = 0; iii < 10; iii++)
+                for (int xxx = 0; xxx < 2; xxx++)
                 {
-                    if(ii == 9)
+                    for (int i = 0; i < 15; i++)
                     {
-                        Instantiate(grass, new Vector3(i, ii, iii), Quaternion.identity);
-                    }
-                    else
-                    {
-                        Instantiate(stone, new Vector3(i, ii, iii), Quaternion.identity);
+                        for (int ii = 0; ii < 8; ii++)
+                        {
+                            for (int iii = 0; iii < 15; iii++)
+                            {
+                                if (ii == 7)
+                                {
+                                    Instantiate(grass, new Vector3(i + x * 40, ii + xx * 40, iii + xxx * 40), Quaternion.identity);
+                                }
+                                else
+                                {
+                                    if (Random.Range(0, 3) != 1)
+                                    {
+                                        Instantiate(stone, new Vector3(i + x * 40, ii + xx * 40, iii + xxx * 40), Quaternion.identity);
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
