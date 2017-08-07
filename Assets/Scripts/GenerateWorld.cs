@@ -5,6 +5,7 @@ using UnityEngine;
 public class GenerateWorld : MonoBehaviour {
     public GameObject grass;
     public GameObject stone;
+    public GameObject tree;
 	// Use this for initialization
 	void Start () {
         for (int x = 0; x < 2; x++)
@@ -33,6 +34,8 @@ public class GenerateWorld : MonoBehaviour {
                             }
                         }
                     }
+                    for(int y = 0; y < Random.Range(0, 4); y++)
+                    Instantiate(tree, new Vector3(Random.Range(0f, 14f) + x * 40, 7 + xx * 40, Random.Range(0f, 14f) + xxx * 40), Quaternion.identity);
                 }
             }
         }

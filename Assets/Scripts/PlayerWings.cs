@@ -10,6 +10,7 @@ public class PlayerWings : MonoBehaviour {
     public float flySpeed = 0.1f;
     public RawImage wingIcon;
     private Rigidbody rbody;
+    private float velocity;
     public Resources resource;
 	// Use this for initialization
 	void Start () {
@@ -18,6 +19,10 @@ public class PlayerWings : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        if(resource.getHealth() <= 0f)
+        {
+            SceneManager.LoadScene("main");
+        }
         if(transform.position.y <= -100)
         {
             SceneManager.LoadScene("main");
@@ -79,16 +84,14 @@ public class PlayerWings : MonoBehaviour {
     {
         if (other.gameObject.CompareTag("Floor"))
         {
-            rbody.velocity = Vector3.zero;
-            rbody.angularVelocity = Vector3.zero;
-            stopDownMotion = true;
-        }
-    }
-    void OnCollisionExit(Collision other)
-    {
-        if (other.gameObject.CompareTag("Floor"))
-        {
-            stopDownMotion = false;
+            //rbody.velocity = Vector3.zero;
+            //rbody.angularVelocity = Vector3.zero;
+            //stopDownMotion = true;
+            velocity = other.relativeVelocity.y;
+            if (velocity > 10 && wingsActive == false)
+            {
+                resource.drainHealth(Mathf.Abs(velocity - 5f));
+            }
         }
     }
 }
