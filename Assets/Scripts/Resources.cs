@@ -8,6 +8,7 @@ public class Resources : MonoBehaviour {
     public float timeUntilMagicRegen = 1f;
     public float regenSpeed = .1f;
     private float currentTime = 0f;
+    public PlayerWings touching;
 	// Use this for initialization
 	void Start () {
 		
@@ -16,7 +17,7 @@ public class Resources : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         currentTime += Time.deltaTime;
-        if (currentTime >= timeUntilMagicRegen && magic <= 100f)
+        if (currentTime >= timeUntilMagicRegen && magic <= 100f && touching.isOnNatural())
         {
             magic += regenSpeed;
         }

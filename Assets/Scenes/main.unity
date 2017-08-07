@@ -459,6 +459,10 @@ MonoBehaviour:
   grass: {fileID: 1181616773594884, guid: 8c2b5d5fc804a834fb500d25dd112e46, type: 2}
   stone: {fileID: 1196061852002488, guid: 8a4d5114aa8004c488ee0798dfd6587c, type: 2}
   tree: {fileID: 1917308977571034, guid: 9f9d378208486854dbd96f3b83c08b50, type: 2}
+  sand: {fileID: 1655919425619272, guid: 8c80f797db280bd4e9e3d4f3d7d3696f, type: 2}
+  sandstone1: {fileID: 1342773003054708, guid: 1f5d219f17355684aaf1c53a3f35439c, type: 2}
+  sandstone2: {fileID: 1113772142470930, guid: 1df514bded089d345ace99d16140b42b, type: 2}
+  sandstone3: {fileID: 1158217755510168, guid: 6adb2133791d63d45ba538675d925656, type: 2}
 --- !u!4 &299088127
 Transform:
   m_ObjectHideFlags: 0
@@ -485,6 +489,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   timeUntilMagicRegen: 1
   regenSpeed: 0.3
+  touching: {fileID: 219700917}
 --- !u!1001 &393928172
 Prefab:
   m_ObjectHideFlags: 0
@@ -782,7 +787,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   info: {fileID: 438290556}
   player: {fileID: 219700916}
-  BuildNumber: 0007
+  BuildNumber: 0008
 --- !u!1 &468813203
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class PlayerWings : MonoBehaviour {
     bool wingsActive = false;
     bool stopDownMotion = false;
+    bool inNatural = false;
     public float flySpeed = 0.1f;
     public RawImage wingIcon;
     private Rigidbody rbody;
@@ -93,5 +94,23 @@ public class PlayerWings : MonoBehaviour {
                 resource.drainHealth(Mathf.Abs(velocity - 5f));
             }
         }
+    }
+    void OnCollisionExit(Collision other)
+    {
+        if (other.gameObject.CompareTag("Grass"))
+        {
+            inNatural = false;
+        }
+    }
+    void OnCollisionStay(Collision other)
+    {
+        if (other.gameObject.CompareTag("Grass"))
+        {
+            inNatural = true;
+        }
+    }
+    public bool isOnNatural()
+    {
+        return inNatural;
     }
 }
