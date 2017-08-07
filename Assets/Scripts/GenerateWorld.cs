@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class GenerateWorld : MonoBehaviour {
     public GameObject grass;
@@ -77,6 +78,7 @@ public class GenerateWorld : MonoBehaviour {
                 }
             }
         }
+        Lightmapping.Bake();
 	}
 	
 	// Update is called once per frame

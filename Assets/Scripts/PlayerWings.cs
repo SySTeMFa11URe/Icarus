@@ -83,7 +83,7 @@ public class PlayerWings : MonoBehaviour {
     }
     void OnCollisionEnter(Collision other)
     {
-        if (other.gameObject.CompareTag("Floor"))
+        if (other.gameObject.CompareTag("Floor") || other.gameObject.CompareTag("Grass"))
         {
             //rbody.velocity = Vector3.zero;
             //rbody.angularVelocity = Vector3.zero;
