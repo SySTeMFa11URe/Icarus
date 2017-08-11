@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Floor
   - Grass
+  - TreeTrunk
   layers:
   - Default
   - TransparentFX

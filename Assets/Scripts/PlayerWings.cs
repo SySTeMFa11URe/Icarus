@@ -30,7 +30,6 @@ public class PlayerWings : MonoBehaviour {
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {
-            Debug.Log("Toggled");
             toggleWings();
         }
         if (resource.getMagic() <= 0)
@@ -39,7 +38,7 @@ public class PlayerWings : MonoBehaviour {
         }
         if (wingsActive)
         {
-            wingIcon.enabled = true;
+            //wingIcon.enabled = true;
             rbody.useGravity = false;
             if (Input.GetKeyDown(KeyCode.Space))
             {
@@ -62,7 +61,7 @@ public class PlayerWings : MonoBehaviour {
         }
         else
         {
-            wingIcon.enabled = false;
+            //wingIcon.enabled = false;
             rbody.useGravity = true;
         }
 	}
@@ -112,5 +111,9 @@ public class PlayerWings : MonoBehaviour {
     public bool isOnNatural()
     {
         return inNatural;
+    }
+    public bool isFlying()
+    {
+        return wingsActive;
     }
 }
