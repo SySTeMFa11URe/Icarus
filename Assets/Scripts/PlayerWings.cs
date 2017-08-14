@@ -24,7 +24,11 @@ public class PlayerWings : MonoBehaviour {
         {
             SceneManager.LoadScene("main");
         }
-        if(transform.position.y <= -100)
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("menu");
+        }
+        if (transform.position.y <= -100)
         {
             SceneManager.LoadScene("main");
         }

@@ -16,6 +16,7 @@ public class Resources : MonoBehaviour {
     public Text woodAmount;
     private int selected = 1;
     private bool inventoryShowing = false;
+    private bool pauseMenu = false;
 	// Use this for initialization
 	void Start () {
 		
@@ -101,5 +102,9 @@ public class Resources : MonoBehaviour {
     public bool getInvState()
     {
         return inventoryShowing;
+    }
+    public bool getPause()
+    {
+        return pauseMenu;
     }
 }
