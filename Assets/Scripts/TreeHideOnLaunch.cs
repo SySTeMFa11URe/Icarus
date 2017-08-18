@@ -17,6 +17,11 @@ public class TreeHideOnLaunch : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+		if(treeTrunk.activeSelf == false)
+        {
+            treeTop1.SetActive(false);
+            treeTop2.SetActive(false);
+            treeTop3.SetActive(false);
+        }
+    }
 }

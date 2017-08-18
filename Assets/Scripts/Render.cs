@@ -15,10 +15,16 @@ public class Render : MonoBehaviour {
 	}
     void OnTriggerEnter(Collider other)
     {
-        other.GetComponent<MeshRenderer>().enabled = true;
+        if (!(other.gameObject.CompareTag("IslandGen")))
+        {
+            other.GetComponent<MeshRenderer>().enabled = true;
+        }
     }
     void OnTriggerExit(Collider other)
     {
-        other.GetComponent<MeshRenderer>().enabled = false;
+        if (!(other.gameObject.CompareTag("IslandGen")))
+        {
+            other.GetComponent<MeshRenderer>().enabled = false;
+        }
     }
 }

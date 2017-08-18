@@ -16,21 +16,42 @@ public class PlayerWings : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         rbody = GetComponent<Rigidbody>();
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 	
 	// Update is called once per frame
 	void Update () {
         if(resource.getHealth() <= 0f)
         {
-            SceneManager.LoadScene("main");
+            transform.position = new Vector3(0, 8, 0);
+            rbody.velocity = Vector3.zero;
+            rbody.angularVelocity = Vector3.zero;
+            resource.resetAll();
         }
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             SceneManager.LoadScene("menu");
         }
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            if(Cursor.lockState == CursorLockMode.Locked)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
+            else
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+        }
         if (transform.position.y <= -100)
         {
-            SceneManager.LoadScene("main");
+            transform.position = new Vector3(0, 8, 0);
+            rbody.velocity = Vector3.zero;
+            rbody.angularVelocity = Vector3.zero;
+            resource.resetAll();
         }
         if (Input.GetKeyDown(KeyCode.Q))
         {

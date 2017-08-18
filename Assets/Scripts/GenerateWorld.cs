@@ -15,28 +15,57 @@ public class GenerateWorld : MonoBehaviour {
     public GameObject cursedGrass;
     public GameObject cursedStone;
     public GameObject homeGrass;
+    public GameObject materialSand;
+    public GameObject materialIron;
+    public GameObject genIsland;
     private int sandstoneType;
     private int biomeType;
-    private int biomePOS;
+    private int biomePOS = 40;
     private int range1;
     private int range2;
 	// Use this for initialization
 	void Start () {
-        for (int x = 0; x < 2; x++)
+        for (int x = 0; x < 20; x++)
         {
-            for (int xx = 0; xx < 2; xx++)
+            for (int xx = 0; xx < 20; xx++)
             {
-                for (int xxx = 0; xxx < 2; xxx++)
+                for (int xxx = 0; xxx < 20; xxx++)
                 {
+                    if (x == 0 && xx == 0 && xxx == 0)
+                    {
+                        for (int i = 0; i < 20; i++)
+                        {
+                            for (int ii = 0; ii < 8; ii++)
+                            {
+                                for (int iii = 0; iii < 20; iii++)
+                                {
+                                    if (ii == 7)
+                                    {
+                                        Instantiate(homeGrass, new Vector3(i + x * biomePOS, ii + xx * biomePOS, iii + xxx * biomePOS), Quaternion.identity);
+                                    }
+                                    else
+                                    {
+                                        Instantiate(stone, new Vector3(i + x * biomePOS, ii + xx * biomePOS, iii + xxx * biomePOS), Quaternion.identity);
+                                    }
+                                }
+                                }
+                            }
+                        }
+                    else
+                    {
+                        Instantiate(genIsland, new Vector3(x * biomePOS, xx * biomePOS, xxx * biomePOS), Quaternion.identity);
+                    }
+
+                    /*
                     if(x ==0 && xx == 0 && xxx == 0)
                     {
-                        biomeType = 10;
+                        biomeType = 21;
                         range1 = 20;
                         range2 = 20;
                     }
                     else
                     {
-                        biomeType = Random.Range(1, 4);
+                        biomeType = Random.Range(1, 20);
                         range1 = Random.Range(20, 25);
                         range2 = Random.Range(20, 25);
                     }
@@ -50,30 +79,45 @@ public class GenerateWorld : MonoBehaviour {
                             {
                                 if (ii == 7)
                                 {
-                                    if (biomeType == 2)
-                                    {
-                                        Instantiate(sand, new Vector3(i + x * biomePOS, ii + xx * biomePOS, iii + xxx * biomePOS), Quaternion.identity);
-                                    }
-                                    else if(biomeType == 1)
+                                    if (biomeType <= 10)
                                     {
                                         Instantiate(grass, new Vector3(i + x * biomePOS, ii + xx * biomePOS, iii + xxx * biomePOS), Quaternion.identity);
                                     }
-                                    else if(biomeType == 3)
+                                    else if(biomeType <= 17)
                                     {
-                                        Instantiate(cursedGrass, new Vector3(i + x * biomePOS, ii + xx * biomePOS, iii + xxx * biomePOS), Quaternion.identity);
+                                        Instantiate(sand, new Vector3(i + x * biomePOS, ii + xx * biomePOS, iii + xxx * biomePOS), Quaternion.identity);
+                                        if (Random.Range(1, 15) == 2)
+                                        {
+                                            if (Random.Range(1, 20) == 5)
+                                            {
+                                                Instantiate(materialIron, new Vector3(Random.Range(0, 20) + x * biomePOS, Random.Range(.2f, .5f) + ii + xx * biomePOS, Random.Range(0, 20) + xxx * biomePOS), Quaternion.identity);
+                                            }
+                                            else
+                                            {
+                                                Instantiate(materialSand, new Vector3(Random.Range(0, 20) + x * biomePOS, Random.Range(.2f, .5f) + ii + xx * biomePOS, Random.Range(0, 20) + xxx * biomePOS), Quaternion.identity);
+                                            }
+                                        }
                                     }
-                                    else if (biomeType == 10)
+                                    else if (biomeType == 21)
                                     {
                                         Instantiate(homeGrass, new Vector3(i + x * biomePOS, ii + xx * biomePOS, iii + xxx * biomePOS), Quaternion.identity);
+                                    }
+                                    else
+                                    {
+                                        Instantiate(cursedGrass, new Vector3(i + x * biomePOS, ii + xx * biomePOS, iii + xxx * biomePOS), Quaternion.identity);
                                     }
                                 }
                                 else
                                 {
-                                    if (biomeType != 10)
+                                    if (biomeType != 21)
                                     {
                                         if (Random.Range(0, 3) != 1)
                                         {
-                                            if (biomeType == 2)
+                                            if (biomeType <= 10 || biomeType == 21)
+                                            {
+                                                Instantiate(stone, new Vector3(i + x * biomePOS, ii + xx * biomePOS, iii + xxx * biomePOS), Quaternion.identity);
+                                            }
+                                            else if (biomeType <= 17)
                                             {
                                                 sandstoneType = Random.Range(1, 4);
                                                 if (sandstoneType == 1)
@@ -89,11 +133,7 @@ public class GenerateWorld : MonoBehaviour {
                                                     Instantiate(sandstone3, new Vector3(i + x * biomePOS, ii + xx * biomePOS, iii + xxx * biomePOS), Quaternion.identity);
                                                 }
                                             }
-                                            else if (biomeType == 1)
-                                            {
-                                                Instantiate(stone, new Vector3(i + x * biomePOS, ii + xx * biomePOS, iii + xxx * biomePOS), Quaternion.identity);
-                                            }
-                                            else if (biomeType == 3)
+                                            else
                                             {
                                                 Instantiate(cursedStone, new Vector3(i + x * biomePOS, ii + xx * biomePOS, iii + xxx * biomePOS), Quaternion.identity);
                                             }
@@ -107,7 +147,7 @@ public class GenerateWorld : MonoBehaviour {
                             }
                         }
                     }
-                    if(biomeType == 1)
+                    if(biomeType <= 10)
                     {
                         for (int y = 0; y < Random.Range(1, 4); y++)
                         {
@@ -122,7 +162,7 @@ public class GenerateWorld : MonoBehaviour {
                             Instantiate(evilCastle, new Vector3(10f + x * biomePOS, 9f + xx * biomePOS, 9f + xxx * biomePOS), Quaternion.identity);
                         }
                         */
-                    }
+                    //}
                 }
             }
         }

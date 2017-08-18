@@ -7,6 +7,8 @@ public class Resources : MonoBehaviour {
     private float magic = 100f;
     private float health = 100f;
     private int wood = 0;
+    private int sand = 0;
+    private int iron = 0;
     public float timeUntilMagicRegen = 1f;
     public float regenSpeed = .1f;
     private float currentTime = 0f;
@@ -14,6 +16,8 @@ public class Resources : MonoBehaviour {
     public Image inventoryBack;
     public Text inventoryHeading;
     public Text woodAmount;
+    public Text sandAmount;
+    public Text ironAmount;
     private int selected = 1;
     private bool inventoryShowing = false;
     private bool pauseMenu = false;
@@ -61,13 +65,19 @@ public class Resources : MonoBehaviour {
             inventoryBack.enabled = true;
             inventoryHeading.enabled = true;
             woodAmount.enabled = true;
-            woodAmount.text = "Wood: "+wood;
+            sandAmount.enabled = true;
+            ironAmount.enabled = true;
+            woodAmount.text = "Wood: " + wood;
+            sandAmount.text = "Sand: " + sand;
+            ironAmount.text = "Iron: " + iron;
         }
         else
         {
             inventoryBack.enabled = false;
             inventoryHeading.enabled = false;
             woodAmount.enabled = false;
+            sandAmount.enabled = false;
+            ironAmount.enabled = false;
         }
     }
     public void drainMagic(float amountToDrain)
@@ -95,9 +105,25 @@ public class Resources : MonoBehaviour {
     {
         wood += amountToAdd;
     }
+    public void addSand(int amountToAdd)
+    {
+        sand += amountToAdd;
+    }
+    public void addIron(int amountToAdd)
+    {
+        iron += amountToAdd;
+    }
     public int getWood()
     {
         return wood;
+    }
+    public int getSand()
+    {
+        return sand;
+    }
+    public int getIron()
+    {
+        return iron;
     }
     public bool getInvState()
     {
@@ -106,5 +132,13 @@ public class Resources : MonoBehaviour {
     public bool getPause()
     {
         return pauseMenu;
+    }
+    public void resetAll()
+    {
+        health = 100f;
+        magic = 100f;
+        wood = 0;
+        sand = 0;
+        iron = 0;
     }
 }
